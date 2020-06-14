@@ -14,12 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const allHearts = document.querySelectorAll(".like-glyph");
   //Iterate over the array of all hearts
   for (const heart of allHearts){
-    //Add an event listener for a click event on an empty heart
-    if (heart.innerHTML == EMPTY_HEART){
-      heart.addEventListener("click", function() {
+      heart.addEventListener("click", () => {
+         //Add an event listener for a click event on an empty heart
+     if (heart.innerHTML == EMPTY_HEART){
        //Invoke mimicServerCall to simulate making a server request
        //Which randomly fails to simulate faulty network conditions
-       mimicServerCall(url="http://mimicServer.example.com", config={});
+       mimicServerCall(url="http://mimicServer.example.com", config={})
        //When the server returns a success status
        //Change the heart to a full heart
        //Add the .activated-heart class to make the heart appear red
@@ -37,10 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
         errorMessage.innerHTML = returnMessage;
         //Hide the modal after 5 seconds (5k milliseconds)
         setTimeout(() => { errorStrip.setAttribute("class", "hidden") }, 5000);
-       })
-      })
-    }
-    //Add an event listener for a click event on a FULL heart
+       })}
+         //Add an event listener for a click event on a FULL heart
     else { 
       heart.addEventListener("click", () => {
         //Change the heart back to an empty heart
@@ -49,6 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         heart.removeAttribute("class");
       })
     }
+      })
   }
 })
 
